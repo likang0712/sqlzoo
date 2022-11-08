@@ -52,7 +52,7 @@ WHERE movieid = (SELECT id
 -- 8. List the films in which 'Harrison Ford' has appeared
 SELECT movie.title
 FROM movie JOIN casting ON (movie.id = casting.movieid)
-WHERE casting.actorid IN (SELECT id
+WHERE casting.actorid IN (SELECT DISTINCT id
                           FROM actor
                           WHERE name = 'Harrison Ford')
 
@@ -110,6 +110,17 @@ WHERE movie.id = casting.movieid
 GROUP BY actor.name
 HAVING COUNT(actor.name) >=15
 ORDER BY actor.name
+
+
+SELECT name
+FROM actor, casting
+WHERE id = actorid
+  AND ord = 1
+GROUP BY name
+HAVING COUNT( DISTINCT movieid) >= 15
+ORDER BY name
+
+
 
 -- 14. List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
 SELECT movie.title, COUNT(casting.actorid) AS 'Total Actors'
