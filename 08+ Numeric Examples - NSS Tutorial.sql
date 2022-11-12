@@ -2,6 +2,9 @@
 -- NSS Tutorial
 -- https://sqlzoo.net/wiki/NSS_Tutorial
 
+-- Calc the average
+-- Use 'SUM(CASE WHEN .. THEN .. ELSE 0 END)' to include/exclude the calculation
+
 -- 1. The example shows the number who responded for: 
 -- question 1 
 -- at 'Edinburgh Napier University' 
